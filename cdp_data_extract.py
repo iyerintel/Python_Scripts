@@ -260,13 +260,13 @@ net_dev = {}
 for cdp in cdp_neigh:
 
     # Split each line apart
-    cdp_data_line = cdp.split("\n")
+    cdp_line = cdp.split("\n")
 
     # Reset hostname for each cdp output
     hostname = ''
 
     # Iterate over each line of the cdp data
-    for line in cdp_data_line:
+    for line in cdp_line:
 
         # As a precaution set hostname to '' on every device divider
         if '----------------' in line:
@@ -288,28 +288,28 @@ for cdp in cdp_neigh:
             if hostname:
                 net_dev[hostname]['ip'] = ip
 
-        # Process vendor, model, and device_type
+        # Process vendor, model, and dev_type
         if 'Platform: ' in line:
 
             (platform, capabilities) = line.split(',')
 
             # Process vendor and model
-            (junk, model_vendor) = platform.split("Platform: ")
-            (vendor, model) = model_vendor.split()
+            (junk, model_ven) = platform.split("Platform: ")
+            (ven, model) = model_ven.split()
 
-            # Process device_type
+            # Process dev_type
             (junk, capabilities) = capabilities.split("Capabilities: ")
             if 'Router' in capabilities:
-                device_type = 'router'
+                dev_type = 'router'
             elif 'Switch' in capabilities:
-                device_type = 'switch'
+                dev_type = 'switch'
             else:
-                device_type = 'unknown'
+                dev_type = 'unknown'
 
             if hostname:
-                net_dev[hostname]['vendor'] = vendor
+                net_dev[hostname]['vendor'] = ven
                 net_dev[hostname]['model'] = model
-                net_dev[hostname]['device_type'] = device_type
+                net_dev[hostname]['dev_type'] = dev_type
 
 
 print '\n'
