@@ -1,0 +1,21 @@
+
+
+
+f = open("sw1_cdp.txt")
+cdp_data = f.read()
+f.close()
+
+dict = {}
+
+dict['remote_hosts'] = re.findall(r"Device ID: (.+)", cdp_data)
+dict['IPs'] = re.findall(r"IP address: (.+)", cdp_data)
+dict['platform'] = re.findall(r"Platform: (.+?),", cdp_data)
+
+
+# Print output
+print 
+ordered_var = ('remote_hosts', 'IPs', 'platform')
+for k in ordered_var:
+    print "%15s: %-20s" % (k, dict[k])
+
+print 
