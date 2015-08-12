@@ -13,3 +13,4 @@ for entry in (entry_1, entry_2, entry_3, entry_4):
     print "%s %s" % (ip_prefix, as_path)
 
 print "\n"
+ew
