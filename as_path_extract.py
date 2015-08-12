@@ -1,5 +1,8 @@
 #!/usr/bin/env python
-
+'''
+Using the below "show ip bgp" data, the split function is used to output the IP prefix associated with the neighbor and 
+the respective AS path.
+'''
 
 entry_1 = "*  1.0.192.0/18   157.130.10.233        0 701 38040 9737 i"
 entry_2 = "*  1.1.1.0/24      157.130.10.233         0 701 1299 15169 i"
@@ -13,4 +16,3 @@ for entry in (entry_1, entry_2, entry_3, entry_4):
     print "%s %s" % (ip_prefix, as_path)
 
 print "\n"
-ew
