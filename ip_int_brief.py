@@ -1,5 +1,8 @@
 #!/usr/bin/env python
-
+'''
+This script will take in the show ip int brief output and present only the list which will have only interfaces that are UP both
+in the physical and link layer
+''' 
 # Used to print out the list below
 import pprint
 
@@ -48,5 +51,5 @@ for line in ip_lines:
 
 print "\n"
 
-pprint.pprint(show_ip_list)
+pprint.pprint(ip_list)
 print "\n"
